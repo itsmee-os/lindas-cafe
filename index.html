@@ -1,324 +1,835 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linda's Cafe | Lexington Park, MD</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #D35400;
-            --secondary: #E67E22;
-            --cream: #FDF6E3;
-            --dark: #2C3E50;
-            --light: #FFFFFF;
-        }
-        
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--cream);
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--light);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: var(--light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-        
-        nav a:hover {
-            opacity: 0.8;
-        }
-        
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1920') center/cover;
-            color: var(--light);
-            padding: 2rem;
-        }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--primary);
-            color: var(--light);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(211, 84, 0, 0.4);
-        }
-        
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary);
-        }
-        
-        .about {
-            background: var(--light);
-            padding: 5rem 2rem;
-            margin-top: -50px;
-        }
-        
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .about-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-        
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-        
-        .menu-item {
-            background: var(--light);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-        
-        .menu-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .menu-item h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .menu-item .price {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--secondary);
-            margin-top: 1rem;
-        }
-        
-        .menu-item p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        
-        .contact {
-            background: var(--dark);
-            color: var(--light);
-            max-width: 100%;
-            padding: 5rem 2rem;
-        }
-        
-        .contact h2 {
-            color: var(--light);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .contact-item h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .contact-item p {
-            font-size: 1.1rem;
-        }
-        
-        .contact-item a {
-            color: var(--secondary);
-            text-decoration: none;
-        }
-        
-        footer {
-            background: #1a252f;
-            color: #888;
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-            
-            nav ul {
-                gap: 1rem;
-            }
-            
-            nav a {
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linda's Cafe | Lexington Park, MD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a1a1a;
+      --secondary: #2d2d2d;
+      --accent: #c9a962;
+      --accent-dark: #a68b4b;
+      --cream: #faf8f5;
+      --text: #333;
+      --text-light: #666;
+      --white: #fff;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Elegant Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s ease;
+    }
+    
+    header.scrolled {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      padding: 1rem 5%;
+      box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+    }
+    
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    
+    header.scrolled .logo { color: var(--primary); }
+    
+    nav { display: flex; gap: 2.5rem; align-items: center; }
+    
+    nav a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    header.scrolled nav a { color: var(--text); }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after { width: 100%; }
+    
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%),
+                  url('https://s3-media0.fl.yelpcdn.com/bphoto/Ajtu6UATLxRmEGR-o3H_2A/l.jpg') center/cover;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(201,169,98,0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(201,169,98,0.1) 0%, transparent 40%);
+    }
+    
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,169,98,0.2);
+      border: 1px solid rgba(201,169,98,0.4);
+      color: var(--accent);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease;
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+    
+    .hero h1 span {
+      color: var(--accent);
+      font-style: italic;
+    }
+    
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+    
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      animation: fadeInUp 0.8s ease 0.6s both;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease 0.8s both;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary);
+    }
+    
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(201,169,98,0.3);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      background: var(--primary);
+      padding: 3rem 5%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .stat-label {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    /* About Section */
+    .about {
+      padding: 8rem 5%;
+      background: var(--white);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-label {
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .about-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 50%);
+    }
+    
+    .about-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+    
+    .about-content p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .feature {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--cream);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+    }
+    
+    .feature h4 {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .feature p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* Menu Section */
+    .menu {
+      padding: 8rem 5%;
+      background: var(--cream);
+    }
+    
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    
+    .menu-category {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+    
+    .menu-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+    
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px solid var(--cream);
+    }
+    
+    .category-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .category-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--white);
+    }
+    
+    .category-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+    
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px dashed rgba(0,0,0,0.1);
+    }
+    
+    .menu-item:last-child { border: none; }
+    
+    .menu-item h4 {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .menu-item p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    
+    .menu-item span {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--accent-dark);
+      font-size: 1.1rem;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      padding: 8rem 5%;
+      background: var(--primary);
+    }
+    
+    .gallery .section-title { color: var(--white); }
+    .gallery .section-label { color: var(--accent); }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    
+    .gallery-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 8rem 5%;
+      background: var(--white);
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    
+    .contact-card {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--cream);
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .contact-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .contact-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--white);
+    }
+    
+    .contact-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-card p {
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+    
+    .contact-card a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      padding: 4rem 5% 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    
+    .footer-logo span { color: var(--accent); }
+    
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      nav { display: none; }
+      .hero h1 { font-size: 2.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">☕ Linda's Cafe</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Linda's Cafe</h1>
-            <p>Home-Style Breakfast & Lunch Made with Love</p>
-            <a href="#menu" class="btn">View Our Menu</a>
+  <header>
+    <a href="#" class="logo">Linda's<span>'</span>Cafe</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Est. 2010 • Lexington Park</div>
+      <h1>Where Every Morning<br>Feels Like <span>Home</span></h1>
+      <p class="hero-tagline">Classic American Comfort Food, Elevated</p>
+      <p class="hero-desc">Start your day with farm-fresh eggs, artisanal coffees, and dishes crafted with love. Experience the warmth of true Southern hospitality.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">View Our Menu</a>
+        <a href="#contact" class="btn btn-secondary">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">14+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">50K+</div>
+      <div class="stat-label">Happy Customers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">4.5★</div>
+      <div class="stat-label">Star Rating</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Fresh Ingredients</div>
+    </div>
+  </div>
+
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">A Lexington Park Tradition</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="https://s3-media0.fl.yelpcdn.com/bphoto/nMmNTriIQvRd3CRlcY55bg/l.jpg" alt="Linda's Cafe Interior">
         </div>
-    </section>
-    
-    <section class="about" id="about">
         <div class="about-content">
-            <h2>Welcome to Linda's Cafe</h2>
-            <p>Since opening our doors, Linda's Cafe has been serving the Lexington Park community with authentic American comfort food. We believe in using fresh, locally-sourced ingredients to create meals that feel like home. Whether you're grabbing a quick breakfast before work or enjoying a leisurely lunch with friends, our friendly staff makes you feel like family.</p>
+          <h3>Crafted with Love, Served with Joy</h3>
+          <p>Since 2010, Linda's Cafe has been the heart of Lexington Park's breakfast scene. What started as a small family diner has become a beloved community gathering place.</p>
+          <p>Every dish is made from scratch using locally-sourced ingredients. Our recipes, passed down through generations, bring authentic American comfort to your table.</p>
+          <div class="features">
+            <div class="feature">
+              <div class="feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h4>Fresh Daily</h4>
+                <p>Baked goods made each morning</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div>
+                <h4>Quality First</h4>
+                <p>Premium local ingredients</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <h4>Local Favorite</h4>
+                <p>Community-owned since 2010</p>
+              </div>
+            </div>
+            <div class="feature">
+              <div class="feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h4>Affordable</h4>
+                <p>Quality meals, fair prices</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
-    
-    <section id="menu">
-        <h2>Our Menu Highlights</h2>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <h3>Classic Breakfast Platter</h3>
-                <p>Two eggs any style, bacon or sausage, hash browns, and toast</p>
-                <div class="price">$9.99</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Our Menu</p>
+        <h2 class="section-title">Customer Favorites</h2>
+      </div>
+      <div class="menu-grid">
+        <div class="menu-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
-            <div class="menu-item">
-                <h3>Fluffy Pancakes</h3>
-                <p>Three buttermilk pancakes served with maple syrup and butter</p>
-                <div class="price">$8.49</div>
+            <h3>Signature Breakfast</h3>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Chesapeake Benedict</h4>
+              <p>Poached eggs, crab cake, hollandaise</p>
             </div>
-            <div class="menu-item">
-                <h3>Breakfast Burrito</h3>
-                <p>Scrambled eggs, cheese, bacon, peppers, and onions in a flour tortilla</p>
-                <div class="price">$10.99</div>
+            <span>$16.95</span>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>French Toast Sandwich</h4>
+              <p>Brioche, scrapple, maple syrup</p>
             </div>
-            <div class="menu-item">
-                <h3>Club Sandwich</h3>
-                <p>Triple-decker with turkey, bacon, lettuce, tomato, and mayo</p>
-                <div class="price">$11.99</div>
+            <span>$13.95</span>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Strawberry Cinnamon Roll</h4>
+              <p>Fresh-baked, cream cheese glaze</p>
             </div>
-            <div class="menu-item">
-                <h3>Grilled Chicken Salad</h3>
-                <p>Fresh mixed greens with grilled chicken, avocado, and honey mustard dressing</p>
-                <div class="price">$12.49</div>
-            </div>
-            <div class="menu-item">
-                <h3>Philly Cheesesteak</h3>
-                <p>Thinly sliced steak, peppers, onions, and melted cheese on a hoagie</p>
-                <div class="price">$13.99</div>
-            </div>
+            <span>$8.95</span>
+          </div>
         </div>
-    </section>
-    
-    <section class="contact" id="contact">
-        <h2>Visit Us Today</h2>
-        <div class="contact-grid">
-            <div class="contact-item">
-                <h3>📍 Address</h3>
-                <p>22608 Three Notch Rd<br>Lexington Park, MD 20653</p>
+        
+        <div class="menu-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
             </div>
-            <div class="contact-item">
-                <h3>📞 Phone</h3>
-                <p><a href="tel:+13018623544">(301) 862-3544</a></p>
+            <h3>House Specialties</h3>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Classic American Breakfast</h4>
+              <p>Eggs, bacon, toast, home fries</p>
             </div>
-            <div class="contact-item">
-                <h3>✉️ Email</h3>
-                <p><a href="mailto:lindascafeonthego@gmail.com">lindascafeonthego@gmail.com</a></p>
+            <span>$12.95</span>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Chicken & Waffles</h4>
+              <p>Fried chicken, Belgian waffle</p>
             </div>
-            <div class="contact-item">
-                <h3>🕐 Hours</h3>
-                <p>Monday - Saturday: 8AM - 2PM<br>Sunday: Closed</p>
+            <span>$15.95</span>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Veggie Omelette</h4>
+              <p>Fresh vegetables, cheese</p>
             </div>
+            <span>$11.95</span>
+          </div>
         </div>
-    </section>
-    
-    <footer>
-        <p>&copy; 2026 Linda's Cafe. All rights reserved.</p>
-    </footer>
+        
+        <div class="menu-category">
+          <div class="category-header">
+            <div class="category-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <h3>Beverages</h3>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Signature Coffee</h4>
+              <p>Locally roasted, fresh brew</p>
+            </div>
+            <span>$3.50</span>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Fresh Juices</h4>
+              <p>Orange, apple, grapefruit</p>
+            </div>
+            <span>$4.50</span>
+          </div>
+          <div class="menu-item">
+            <div>
+              <h4>Mimosa</h4>
+              <p>Champagne, fresh orange juice</p>
+            </div>
+            <span>$9.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Gallery</p>
+        <h2 class="section-title">What Our Guests Love</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/Ajtu6UATLxRmEGR-o3H_2A/l.jpg" alt="Food"></div>
+        <div class="gallery-item"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/_ruvyBaNcszzr_cOQHgfDw/l.jpg" alt="Food"></div>
+        <div class="gallery-item"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/aoMVuztXRhj9kM6LiVHEVw/l.jpg" alt="Interior"></div>
+        <div class="gallery-item"><img src="https://s3-media0.fl.yelpcdn.com/bphoto/R7bca9fB6l1HGcWlCTUxWA/l.jpg" alt="Coffee"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Visit Us</p>
+        <h2 class="section-title">We'd Love to See You</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3>Location</h3>
+          <p>22608 Three Notch Road<br>Lexington Park, MD 20653</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Hours</h3>
+          <p>Monday - Friday: 8AM - 2PM<br>Saturday - Sunday: 7AM - 2PM</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <h3>Contact</h3>
+          <p><a href="tel:+13018623544">(301) 862-3544</a><br><a href="mailto:lindascafeonthego@gmail.com">lindascafeonthego@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Linda's<span>'</span>Cafe</div>
+    <p>&copy; 2026 Linda's Cafe. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
 </body>
 </html>
